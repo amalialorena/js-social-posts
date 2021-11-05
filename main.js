@@ -24,7 +24,8 @@ let text = "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio 
 let date = "4 mesi fa";
 let likes = 80;
 
-let template = `<div class="post">
+function createTemplate (profilePic, author, date, text, image, likes) {
+return `<div class="post">
 <div class="post__header">
     <div class="post-meta">                    
         <div class="post-meta__icon">
@@ -54,8 +55,9 @@ let template = `<div class="post">
     </div> 
 </div>            
 </div>`;
+} 
 
 let container = document.getElementById("container");
 
-container.innerHTML = template;
+container.innerHTML = createTemplate(profilePic, author, date, text, image, likes);
 
