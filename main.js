@@ -7,5 +7,12 @@
 // testo del post,
 // immagine (non tutti i post devono avere una immagine) [quindi gestisco il caso],
 // numero di likes.
-// - Prendendo come riferimento il layout di esempio presente nell’html, stampiamo i post del nostro feed.
+// - Prendendo come riferimento il layout di esempio presente nell’html, stampiamo i post del nostro feed.    
 // - Rendiamo il tasto “Mi Piace” cliccabile con incremento del counter dei likes.
+
+
+// 1. Trasformo il template html in elementi js
+// 2. Rendo dinamico il template
+// 3. Creo l'array di oggetti
+// 4. Genero il template con i dati dell'array
+// 5. Aggiungo funzionalità click
