@@ -15,15 +15,9 @@
 // 3. Creo l'array di oggetti
 // 4. Genero il template con i dati dell'array
 // 5. Aggiungo funzionalità click
+
+
 let container = document.getElementById("container");
-let user = {
-  profilePic: "https://unsplash.it/300/300?image=15",
-  author: "Phil Mangione",
-  image: "https://unsplash.it/600/300?image=171",
-  text: "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
-  date: "4 mesi fa",
-  likes: 80,
-};
 
 const users = [
     {
@@ -35,39 +29,40 @@ const users = [
         likes: 80,
     },
     {
-        profilePic: "https://unsplash.it/300/300?image=15",
+        profilePic: "https://unsplash.it/300/300?image=206",
         author: "Robert Rhodes",
-        image: "https://unsplash.it/600/300?image=171",
+        image: "",
         text: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
         date: "2 settimane fa",
         likes: 50,
     },
     {
-        profilePic: "https://unsplash.it/300/300?image=15",
+        profilePic: "https://unsplash.it/300/300?image=912",
         author: "Daisy Dove",
-        image: "https://unsplash.it/600/300?image=171",
+        image: "https://unsplash.it/600/300?image",
         text: "Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage.",
         date: "1 mese fa",
         likes: 1,
     },
     {
-        profilePic: "https://unsplash.it/300/300?image=15",
+        profilePic: "https://unsplash.it/300/300?image=564",
         author: "Luna Simone",
-        image: "https://unsplash.it/600/300?image=171",
+        image: "https://unsplash.it/600/300?image=614",
         text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
         date: "2 mesi fa",
         likes: 1890,
     },
     {
-        profilePic: "https://unsplash.it/300/300?image=15",
+        profilePic: "https://unsplash.it/300/300?image=82",
         author: "Blue Ivy",
-        image: "https://unsplash.it/600/300?image=171",
+        image: "",
         text: "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested..",
         date: "4 mesi fa",
         likes: 800,
     },
 ]
 
+//ciclo per generare i dati dell'array in pagina
 let usersList = "";
 for(let i = 0; i < users.length; i++) {
     let currentUser = users[i];
@@ -76,6 +71,7 @@ for(let i = 0; i < users.length; i++) {
     container.innerHTML = usersList;
 }
 
+//funzione per generare i dati di un oggetto in pagina
 function createTemplate(user) {
   const { profilePic, author, date, text, image, likes } = user;
   return `
