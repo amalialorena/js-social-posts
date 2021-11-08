@@ -19,8 +19,9 @@
 
 let container = document.getElementById("container");
 
-const users = [
+let users = [
     {
+        id: 1,
         profilePic: "https://unsplash.it/300/300?image=15",
         author: "Phil Mangione",
         image: "https://unsplash.it/600/300?image=171",
@@ -29,6 +30,7 @@ const users = [
         likes: 80,
     },
     {
+        id: 2,
         profilePic: "https://unsplash.it/300/300?image=206",
         author: "Robert Rhodes",
         image: "",
@@ -37,6 +39,8 @@ const users = [
         likes: 50,
     },
     {
+
+        id: 3,
         profilePic: "https://unsplash.it/300/300?image=912",
         author: "Daisy Dove",
         image: "https://unsplash.it/600/300?image",
@@ -45,6 +49,7 @@ const users = [
         likes: 1,
     },
     {
+        id: 4,
         profilePic: "https://unsplash.it/300/300?image=564",
         author: "Luna Simone",
         image: "https://unsplash.it/600/300?image=614",
@@ -53,6 +58,7 @@ const users = [
         likes: 1890,
     },
     {
+        id: 5,
         profilePic: "https://unsplash.it/300/300?image=82",
         author: "Blue Ivy",
         image: "",
@@ -63,17 +69,59 @@ const users = [
 ]
 
 //ciclo per generare i dati dell'array in pagina
-let usersList = "";
-for(let i = 0; i < users.length; i++) {
-    let currentUser = users[i];
-    usersList += createTemplate(currentUser);
-    console.log(usersList);
-    container.innerHTML = usersList;
+function updateDOM () {
+    let usersList = "";
+    for(let i = 0; i < users.length; i++) {
+        let currentUser = users[i];
+        usersList += createTemplate(currentUser);
+        container.innerHTML = usersList;
+    }    
 }
+
+function updateUserLikes (id) {
+    const usersCopy = [...users];
+
+    for(let i = 0; i < usersCopy.length; i++) {
+        let currentUser = usersCopy[i];
+        if (currentUser.id == id) {
+            currentUser.likes = currentUser.likes + 1;
+        }
+    }
+
+    return usersCopy;
+} 
+
+updateDOM();
+addEventListeners();
+
+//post è l'array
+function addEventListeners () {
+
+    let buttons = document.querySelectorAll(".likes__cta");
+    
+    for(let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click",
+        function(){
+            let button = buttons[i];
+            let id = button.querySelector('.like-button').attributes['data-postid'].value;
+            users = updateUserLikes(id);
+            updateDOM();
+            addEventListeners();
+        }
+        )
+    }
+} 
+
+
+// likes.addEventListener("click",
+//     function(){
+//         console.log("click")
+//     }
+// )
 
 //funzione per generare i dati di un oggetto in pagina
 function createTemplate(user) {
-  const { profilePic, author, date, text, image, likes } = user;
+  const { profilePic, author, date, text, image, likes, id } = user;
   return `
     <div class="post">
         <div class="post__header">
@@ -94,7 +142,7 @@ function createTemplate(user) {
         <div class="post__footer">
             <div class="likes js-likes">
                 <div class="likes__cta">
-                    <a class="like-button  js-like-button" href="#" data-postid="1">
+                    <a class="like-button js-like-button" href="#" data-postid=${id}>
                         <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                         <span class="like-button__label">Mi Piace</span>
                     </a>
@@ -107,6 +155,7 @@ function createTemplate(user) {
     </div>`;
 }
 
-
+//parametrizzo il bottone
+//faccio un array con tutti i bottoni in pagina
 
 
